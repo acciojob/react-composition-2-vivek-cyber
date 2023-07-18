@@ -2,18 +2,21 @@
 import React from "react";
 import './../styles/App.css';
 import { useState } from "react";
+import Close from "./Close";
 
 const App = () => {
 
-  let [disval,setdisval]=useState({display:"none"})
+  let [disval,setdisval]=useState(false)
 
   return (
     <div>
-        <button className="model-show" onClick={()=>{setdisval({display:"block"});console.log(disval)}}>Show Modal</button>
-        <div className="model-overlay" style={disval}>
-          <button className="model-close" onClick={()=>{setdisval({display:"none"});console.log(disval)}}>Close</button>
-          <p className="model-p">This is content of the modal</p>
-        </div>
+      <div>
+        <button className="model-show" onClick={()=>{setdisval(true);console.log(disval)}}>Show Modal</button>
+      </div>
+    { disval && <Close setdisval={setdisval} />}
+
+
+
     </div>
   )
 }
